@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ABYLBEK KYZY MARAL | Portfolio</title>
+
+    <!-- 폰트 (원하면 다른 폰트로 바꿔도 돼요) -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+    <style>
+        :root {
+            --bg: #f5f7fb;
+            --card-bg: #ffffff;
+            --primary: #1f2933;
+            --accent: #2563eb;
+            --accent-soft: #e0edff;
+            --text-sub: #6b7280;
+            --border-soft: #e5e7eb;
+            --shadow-soft: 0 8px 20px rgba(15, 23, 42, 0.08);
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--primary);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* 레이아웃 기본 */
+        .page {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 32px 20px 40px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .logo {
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            font-size: 0.95rem;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+
+        .nav {
+            display: flex;
+            gap: 18px;
+            font-size: 0.9rem;
+        }
+
+        .nav a {
+            color: var(--text-sub);
+        }
+
+        .nav a:hover {
+            color: var(--accent);
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+            gap: 24px;
+        }
+
+        /* 왼쪽 큰 카드 (소개 + 포트폴리오) */
+        .intro-card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 26px 26px 30px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-soft);
+        }
+
+        .intro-top {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-photo {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background-color: var(--accent-soft);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .intro-text h1 {
+            font-size: 1.6rem;
+            margin-bottom: 4px;
+        }
+
+        .intro-text .role {
+            font-size: 0.95rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        .intro-text .summary {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+
+        .intro-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 14px 0 18px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background-color: var(--accent-soft);
+            color: var(--accent);
+        }
+
+        .intro-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .btn {
+            font-size: 0.85rem;
+            padding: 9px 16px;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .btn-outline {
+            background-color: white;
+            border: 1px solid var(--border-soft);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.92;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .intro-section {
+            margin-top: 10px;
+        }
+
+        .section-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .section-body {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+
+        /* 작은 제목 */
+        .section-caption {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-sub);
+            margin-bottom: 4px;
+        }
+
+        /* 오른쪽 사이드 카드들 */
+        .side-column {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 18px 18px 20px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-soft);
+        }
+
+        .card h3 {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .pill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .pill {
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background-color: #f3f4f6;
+            color: var(--primary);
+        }
+
+        .pill.strong {
+            background-color: var(--accent-soft);
+            color: var(--accent);
+        }
+
+        .edu-item, .contact-item {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            margin-bottom: 6px;
+        }
+
+        .edu-item strong, .contact-item strong {
+            color: var(--primary);
+        }
+
+        /* 포트폴리오 섹션 */
+        .portfolio-section {
+            margin-top: 20px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 14px;
+            margin-top: 8px;
+        }
+
+        .project-card {
+            background-color: #f8fafc;
+            border-radius: 12px;
+            padding: 12px 12px 14px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .project-thumb {
+            width: 100%;
+            height: 130px;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #e5e7eb;
+            margin-bottom: 8px;
+        }
+
+        .project-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-title {
+            font-size: 0.92rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .project-meta {
+            font-size: 0.78rem;
+            color: var(--text-sub);
+            margin-bottom: 6px;
+        }
+
+        .project-desc {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+        }
+
+        /* footer */
+        footer {
+            max-width: 1040px;
+            margin: 20px auto 10px;
+            padding: 0 20px 10px;
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            text-align: center;
+        }
+
+        /* 반응형 */
+        @media (max-width: 800px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 520px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .intro-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .intro-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                justify-content: center;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <!-- 상단 헤더 -->
+    <header>
+        <div class="logo">MARAL PORTFOLIO</div>
+        <nav class="nav">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 왼쪽 소개 + 포트폴리오 -->
+        <section class="intro-card">
+            <div class="intro-top" id="about">
+                <div class="profile-photo">
+                    <!-- 여기 프로필 사진 넣기 -->
+                    <!-- 예: <img src="maral_profile.jpg" alt="Profile photo of Maral" /> -->
+                </div>
+                <div class="intro-text">
+                    <h1>ABYLBEK KYZY MARAL</h1>
+                    <div class="role">Junior Developer · IT 분야 신입</div>
+                    <p class="summary">
+                        한국에서 4년간 유학생활을 하며 컴퓨터정보과를 전공한 마랄입니다.
+                        사람과 기술을 연결하는 개발자가 되기 위해, Java 기반 개발과 네트워크 기초를 중심으로
+                        꾸준히 학습하고 있습니다.
+                    </p>
+                </div>
+            </div>
+
+            <div class="intro-tags">
+                <span class="tag">Java · 객체지향</span>
+                <span class="tag">웹 · 모바일 서비스</span>
+                <span class="tag">Linux · Windows · Network</span>
+                <span class="tag">한국어 · 러시아어 · 키르기스어 · 우즈벡어</span>
+            </div>
+
+            <div class="intro-actions">
+                <!-- 이력서 PDF 링크 있으면 href 수정 -->
+                <a href="#" class="btn btn-primary">이력서 PDF 다운로드</a>
+                <a href="#projects" class="btn btn-outline">포트폴리오 보러가기</a>
+            </div>
+
+            <!-- 자기소개 섹션 -->
+            <div class="intro-section">
+                <div class="section-caption">ABOUT ME</div>
+                <div class="section-title">도전을 즐기는 유학생 출신 개발자</div>
+                <p class="section-body">
+                    저는 키르기스스탄 오시(Osh)에서 태어나 한국으로 유학와
+                    한국어를 처음부터 다시 배우며 컴퓨터정보과를 전공했습니다.
+                    새로운 언어와 환경에 적응하는 과정에서 <strong>끈기와 문제 해결력</strong>을 키웠고,
+                    지금은 한국어를 포함해 4개 국어로 소통하며 다양한 배경의 사람들과
+                    함께 일하는 것에 큰 즐거움을 느낍니다.
+                    <br><br>
+                    학교에서는 Java 기반 객체지향 프로그래밍, 데이터베이스, 네트워크, 운영체제 등을 공부했고,
+                    팀 프로젝트로 실제 사용자를 고려한 모바일 웹 서비스를 구현해보며
+                    <strong>UI 흐름 설계와 사용자 경험</strong>에 특히 흥미를 느꼈습니다.
+                    사용자가 편하게 느끼는 서비스, 그리고 팀과 함께 성장하는 개발자가 되고 싶습니다.
+                </p>
+            </div>
+
+            <!-- 포트폴리오 섹션 -->
+            <section class="portfolio-section" id="projects">
+                <div class="section-caption">PORTFOLIO</div>
+                <div class="section-title">프로젝트</div>
+
+                <div class="portfolio-grid">
+                    <!-- 프로젝트 1: 술이 어때? -->
+                    <article class="project-card">
+                        <div class="project-thumb">
+                            <!-- 프로젝트 대표 이미지 -->
+                            <!-- 예: <img src="project_suli_eottae.png" alt="술이 어때? 프로젝트 화면" /> -->
+                        </div>
+                        <div class="project-title">술이 어때? – 술자리 추천 모바일 웹 서비스</div>
+                        <div class="project-meta">Java · MariaDB · Eclipse · 팀 프로젝트</div>
+                        <p class="project-desc">
+                            술자리 상황에 맞춰 메뉴, 안주, 게임 등을 랜덤으로 추천해주는 모바일 웹 서비스입니다.
+                            저는 <strong>Java(Eclipse) 기반 UI 동작 및 화면 전환</strong>,
+                            <strong>MariaDB 연동을 통한 사용자 정보 저장 기능</strong>을 구현했습니다.
+                            직관적인 화면 구성과 간단한 조작으로 사용자가 쉽게 추천 기능을 이용할 수 있도록
+                            UX 개선에 기여했습니다.
+                        </p>
+                    </article>
+
+                    <!-- 프로젝트 2: 여기에 다른 포트폴리오 추가 가능 -->
+                    <article class="project-card">
+                        <div class="project-thumb">
+                            <!-- 예: <img src="project_network_lab.png" alt="네트워크 실습 프로젝트" /> -->
+                        </div>
+                        <div class="project-title">Network Lab – Packet Tracer 실습</div>
+                        <div class="project-meta">Cisco Packet Tracer · CCNA 기초 · 네트워크 설계</div>
+                        <p class="project-desc">
+                            CCNA 과정과 연계해 <strong>스위치·라우터 설정, VLAN, 서브넷팅</strong> 등을
+                            Packet Tracer로 설계·실습한 경험을 정리한 프로젝트입니다.
+                            단순 이론 학습을 넘어서 실제 네트워크 구조를 시각화하며
+                            문제를 단계적으로 해결하는 연습을 했습니다.
+                        </p>
+                    </article>
+
+                    <!-- 프로젝트 3: 자리만 만들어 둠 -->
+                    <article class="project-card">
+                        <div class="project-thumb">
+                            <!-- 예: <img src="project_extra.png" alt="추가 포트폴리오 이미지" /> -->
+                        </div>
+                        <div class="project-title">추가 포트폴리오</div>
+                        <div class="project-meta">이미지와 설명은 나중에 수정</div>
+                        <p class="project-desc">
+                            이 칸에는 추후에 추가할 포트폴리오 내용을 넣으면 됩니다.
+                            스쿨 프로젝트, 개인 토이 프로젝트, 보고서, 발표 자료 등
+                            보여주고 싶은 작업을 자유롭게 소개해주세요.
+                        </p>
+                    </article>
+                </div>
+            </section>
+        </section>
+
+        <!-- 오른쪽 사이드 정보 -->
+        <aside class="side-column">
+            <!-- Skills -->
+            <section class="card" id="skills">
+                <h3>Skills</h3>
+                <div class="section-caption" style="margin-top: 6px;">LANGUAGE &amp; TOOLS</div>
+                <div class="pill-list">
+                    <span class="pill strong">Java</span>
+                    <span class="pill">R</span>
+                    <span class="pill">HTML / CSS</span>
+                    <span class="pill">MariaDB</span>
+                    <span class="pill">Packet Tracer</span>
+                    <span class="pill">Linux (Ubuntu)</span>
+                    <span class="pill">Windows</span>
+                    <span class="pill">AWS 기초</span>
+                </div>
+
+                <div class="section-caption" style="margin-top: 10px;">STRENGTH</div>
+                <ul style="margin-left: 16px; margin-top: 4px; font-size: 0.85rem; color: var(--text-sub);">
+                    <li>새로운 환경과 기술에 빠르게 적응하는 능력</li>
+                    <li>문제 해결을 위한 꾸준한 탐구와 반복 학습</li>
+                    <li>다국어(4개 국어) 기반의 커뮤니케이션 능력</li>
+                    <li>정리·기록을 통해 체계적으로 학습하는 습관</li>
+                </ul>
+            </section>
+
+            <!-- Education -->
+            <section class="card" id="education">
+                <h3>Education</h3>
+                <div class="edu-item">
+                    <strong>영진전문대학교 컴퓨터정보과</strong><br />
+                    유학생 · 전공 : 컴퓨터정보과<br />
+                    네트워크, 운영체제, 프로그래밍, 데이터베이스 등 기초 전공 이수
+                </div>
+                <div class="edu-item">
+                    <strong>건양대학교 어학당</strong><br />
+                    한국어 과정 수료 – 한국어 읽기·쓰기·말하기 심화
+                </div>
+                <div class="edu-item">
+                    <strong>키르기스스탄 고등학교</strong><br />
+                    이과 계열 졸업, 국가장학생 선발 경험
+                </div>
+            </section>
+
+            <!-- Languages -->
+            <section class="card">
+                <h3>Languages</h3>
+                <div class="pill-list">
+                    <span class="pill strong">한국어</span>
+                    <span class="pill strong">러시아어</span>
+                    <span class="pill">키르기스어</span>
+                    <span class="pill">우즈베크어</span>
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-sub); margin-top: 10px;">
+                    서로 다른 문화권의 사람들과 자연스럽게 소통할 수 있는 점은
+                    팀 커뮤니케이션과 글로벌 협업에서 강점이 됩니다.
+                </p>
+            </section>
+
+            <!-- Contact -->
+            <section class="card" id="contact">
+                <h3>Contact</h3>
+                <div class="contact-item">
+                    <strong>Email</strong><br />
+                    abylbekmaral@gmail.com<br />
+                    maraltolonova@naver.com
+                </div>
+                <div class="contact-item">
+                    <strong>Phone</strong><br />
+                    010-6528-0102
+                </div>
+                <div class="contact-item">
+                    <strong>Location</strong><br />
+                    대한민국 · 서울 / 대구 거주 가능
+                </div>
+                <div class="contact-item">
+                    <strong>비자</strong><br />
+                    D-10(구직), F-2-R 지원 의사 있음
+                </div>
+            </section>
+        </aside>
+    </main>
+</div>
+
+<footer>
+    © 2025 ABYLBEK KYZY MARAL. All rights reserved.
+</footer>
+
+</body>
+</html>
+4
