@@ -11,15 +11,16 @@
 
     <style>
         :root{
-            /* 👉 밝고 깔끔한 화이트 + 레드 톤 */
-            --bg-main: #f5f5f7;      /* 전체 배경 */
-            --bg-soft: #ffffff;      /* 오른쪽 Hero 카드 배경 */
-            --bg-card: #ffffff;      /* 공통 카드 배경 */
-            --accent: #d54219;       /* 포인트 레드 */
+            /* 밝은 배경 + 레드 포인트 + 딥블루 포인트 */
+            --bg-main: #f5f5f7;
+            --bg-soft: #ffffff;
+            --bg-card: #ffffff;
+            --accent: #d54219;        /* 레드 포인트 */
             --accent-strong: #b23410;
-            --text-main: #111827;    /* 본문 텍스트 */
-            --text-sub: #4b5563;     /* 설명 텍스트 */
-            --border-soft: #e5e7eb;  /* 연한 테두리 */
+            --accent-blue: #001a4d;   /* 딥블루 포인트 (활동/네트워크용) */
+            --text-main: #111827;
+            --text-sub: #4b5563;
+            --border-soft: #e5e7eb;
             --radius: 18px;
             --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
         }
@@ -94,7 +95,6 @@
         }
 
         .hero-left{
-            /* 어두운 그라데이션 → 밝은 카드 느낌으로 */
             background: linear-gradient(145deg, #ffffff, #f9fafb);
             border-radius: var(--radius);
             padding: 22px 24px;
@@ -203,7 +203,7 @@
             color: var(--text-sub);
         }
 
-        /* 슬라이드 영역 (예전 스타일 유지, 색만 밝게) */
+        /* 슬라이드 영역 */
         .hero-right{
             background-color: var(--bg-soft);
             border-radius: var(--radius);
@@ -322,12 +322,6 @@
             color: #374151;
         }
 
-        .pill.strong{
-            background-color: rgba(239,68,68,0.08);
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
         /* 프로젝트 카드 */
         .project-grid{
             display: grid;
@@ -354,6 +348,10 @@
             display: block;
             margin: 0 auto;
         }
+        .net-img {
+           width: 100%;
+        }
+
 
         .project-meta{
             font-size: 0.8rem;
@@ -365,6 +363,33 @@
             margin-left: 18px;
             font-size: 0.88rem;
             color: var(--text-sub);
+        }
+
+        /* 프로젝트 제목 색상 */
+        .project-title-blue{
+            color: var(--accent);
+        }
+
+        .project-title-blue{
+            color: var(--accent-blue);
+        }
+
+        /* 프로젝트 안의 소제목(1,2,3 화면) – 레드 */
+        .project-text-block h4{
+            color: var(--accent);
+            font-size: 0.96rem;
+            margin-top: 8px;
+        }
+
+        /* "프로젝트 설명 / 주요 구현 내용 / 주요 화면 구성" 라벨 */
+        .project-text-block p strong{
+            color: var(--accent);
+        }
+
+        /* 블루 하이라이트 (Ping, Traceroute 등) */
+        .highlight-blue{
+            color: var(--accent-blue);
+            font-weight: 500;
         }
 
         /* 활동 / 수료증 */
@@ -385,9 +410,10 @@
             color: var(--text-sub);
         }
 
+        /* 활동 링크는 딥블루 */
         .activity-card a{
             font-size: 0.8rem;
-            color: var(--accent);
+             color: var(--accent-strong);
         }
 
         /* Contact */
@@ -442,26 +468,6 @@
                 width: 100%;
             }
         }
-        
-.project-text-block h3{
-    color: rgba(10, 10, 10, 0.85);   /* 기존 accent와 동일 톤, 조금 부드럽게 */
-    font-weight: 700;
-    margin-bottom: 6px;
-}
-
-.project-text-block h4{
-    color: rgba(213, 66, 25, 0.75);   /* h3보다 더 부드럽게 */
-    font-weight: 600;
-    margin-top: 10px;
-    font-size: 1rem;
-}
-
-
-.project-text-block p strong{
-    color: rgba(213, 66, 25, 0.7);
-}
-
-        
     </style>
 </head>
 <body>
@@ -498,12 +504,11 @@ GKS 장학생으로 한국에서 학업을 이어오며 다양한 환경에 빠�
 영진전문대학 컴퓨터정보과에서 IT 분야를 배우며 점점 더 흥미를 느꼈고,  
 새로운 기술을 익히는 과정도 즐겁게 받아들였습니다.  
 모르는 기술도 금방 이해하는 편이라 새로운 도전에도 적극적입니다.
-
                         </p>
                     </div>
                 </div>
                 <div class="hero-actions">
-                    <a href="pdf_file.pdf" class="btn btn-primary">이력서 PDF 다운로드</a>
+                    <a href="#" class="btn btn-primary">이력서 PDF 다운로드</a>
                     <a href="#projects" class="btn btn-outline">프로젝트 바로 보기</a>
                 </div> 
 
@@ -542,7 +547,7 @@ GKS 장학생으로 한국에서 학업을 이어오며 다양한 환경에 빠�
             </aside>
         </section>
 
-        
+        <!-- About + Skills -->
         <section class="two-col" id="skills">
             <article class="card">
                 <div class="section-caption">ABOUT ME</div>
@@ -553,7 +558,6 @@ GKS 장학생으로 한국에서 학업을 이어오며 다양한 환경에 빠�
                     <br><br>
                     언어 장벽과 새로운 환경 속에서 매일 작은 도전을 반복하며 모르는 상황을 스스로 해결하는 힘을 키웠습니다. 
 그 과정에서 기술뿐 아니라 사람으로서도 성장할 기회가 많았고, 새로운 문화를 배우는 일의 소중함을 깊이 느낄 수 있었습니다.
-
                     <br><br>
                     지금은 한국어를 포함해 4개 국어로 소통이 가능하며, 다양한 배경을 가진 사람들과 협력할 때 큰 보람을 느낍니다.
                 </p>
@@ -590,9 +594,10 @@ GKS 장학생으로 한국에서 학업을 이어오며 다양한 환경에 빠�
             <div class="section-title">포트폴리오</div>
             <br>
 
+            <!-- 술이 어때 -->
             <div class="project-grid project-card">
-               <div class="project-text-block">
-                    <h3>"술이 어때?" – 음료 추천 앱 애플리케이션</h3>
+                <div class="project-text-block">
+                    <h3 class="project-title-red">"술이 어때?" – 음료 추천 앱 애플리케이션</h3>
 
                     <p><strong>프로젝트 설명</strong></p>
                     <p>
@@ -603,19 +608,19 @@ GKS 장학생으로 한국에서 학업을 이어오며 다양한 환경에 빠�
 
                     <p><strong>주요 구현 내용</strong></p>
                     <ul>
-                        <li> 레시피 데이터를 저장·조회·수정·삭제하는 기능 개발</li>
+                        <li>레시피 데이터를 저장·조회·수정·삭제하는 기능 개발</li>
                         <li>로그인/회원가입, 아이디·비밀번호 찾기 등 기본 회원 기능 구현</li>
                         <li>실제 사용 흐름을 고려하여 메인 화면, 상세 화면, 관리 화면 간의 UX 설계</li>
                     </ul>
 
                     <p><strong>주요 화면 구성</strong></p>
-                    <h4>1. 주요 메뉴 화면 (Main Menu)</h4>
-                  <ul>
-                    <li>상단에 ‘술이 어때’ 타이틀과 로그인/회원가입 버튼 배치</li>
-                    <li>하단에 위스키·보드카·데킬라·기타 4가지 주류 카테고리 카드로 구분</li>
-                    <li>서비스 소개 이미지를 통해 “편리한 주류 소개/추천 앱”이라는 콘셉트 전달</li>
-                </ul>
 
+                    <h4>1. 주요 메뉴 화면 (Main Menu)</h4>
+                    <ul>
+                        <li>상단에 ‘술이 어때’ 타이틀과 로그인/회원가입 버튼 배치</li>
+                        <li>하단에 위스키·보드카·데킬라·기타 4가지 주류 카테고리 카드로 구분</li>
+                        <li>서비스 소개 이미지를 통해 “편리한 주류 소개/추천 앱”이라는 콘셉트 전달</li>
+                    </ul>
 
                     <h4>2. 로그인 화면 (User Login)</h4>
                     <ul>
@@ -655,7 +660,7 @@ GKS 장학생으로 한국에서 학업을 이어오며 다양한 환경에 빠�
             <!-- Network Lab -->
             <div class="project-grid project-card">
                 <div>
-                    <h3>Network Lab – Packet Tracer 네트워크 실습</h3>
+                    <h3 class="project-title-blue">Network Lab – Packet Tracer 네트워크 실습</h3>
                     <p class="project-meta">
                         도구: Cisco Packet Tracer · 내용: 라우터/스위치 구성, 서브넷팅, SSH 설정 등
                     </p>
@@ -669,18 +674,33 @@ GKS 장학생으로 한국에서 학업을 이어오며 다양한 환경에 빠�
                         <li>서브넷팅을 통해 네트워크를 나누고 IP 주소를 직접 설계</li>
                         <li>라우터 간 라우팅 설정 및 기본 보안 설정 실습</li>
                         <li>SSH 접속 설정을 통해 원격 관리 환경 구성</li>
-                        <li>문제가 발생했을 때 Ping, Traceroute 등을 활용해 원인 추적</li>
+                        <li>문제가 발생했을 때 <span class="highlight-blue">Ping</span>, <span class="highlight-blue">Traceroute</span> 등을 활용해 원인 추적</li>
                     </ul>
                 </div>
                 <div>
-                    <div class="project-thumb">
-                        <img src="사진네트워크.png" alt="Packet Tracer 네트워크 구성 화면">
+                    <!-- 네트워크 이미지 2장 -->
+                    <div class="project-thumb-group">
+                        <div class="project-thumb">
+                            <img class="net-img"  src="사진네트워크.png" alt="Packet Tracer 네트워크 구성 화면">
+                        </div>
+                        <div class="project-thumb">
+                            <!-- ⬇ 파일 이름을 실제 저장한 이름으로 바꿔 주세요 -->
+                            <img class="net-img"  src="net1.png" alt="Packet Tracer 네트워크 토폴로지 화면">
+                        </div>
+                         <div class="project-thumb">
+                            <!-- ⬇ 파일 이름을 실제 저장한 이름으로 바꿔 주세요 -->
+                            <img class="net-img" src="net2.png" alt="Packet Tracer 네트워크 토폴로지 화면">
+                        </div>
+                         <div class="project-thumb">
+                            <!-- ⬇ 파일 이름을 실제 저장한 이름으로 바꿔 주세요 -->
+                            <img class="net-img" src="net3.png" alt="Packet Tracer 네트워크 토폴로지 화면">
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Activities / Certificates -->
+       <!-- Activities / Certificates -->
         <section class="card" id="activities">
             <div class="section-caption">ACTIVITIES</div>
             <div class="section-title">장학 & 프로그램 활동</div>
@@ -720,9 +740,18 @@ GKS 장학생으로 한국에서 학업을 이어오며 다양한 환경에 빠�
                         친구들과 함께 학습하면서 개념을 설명하고 정리하는 능력을 키웠습니다.
                     </p>
                 </article>
+                
+                <article class="activity-card">
+                    <h4>세계인의 날 인터뷰 참여</h4>
+                    <br>
+                    <a href="https://www.news1.kr/local/daegu-gyeongbuk/4686930" target="_blank">뉴스 기사 보기 (News1)</a>
+                    <p>
+                        영진전문대학교 재학 중, 학교 행사인 ‘세계인의 날’을 기념한 인터뷰에 참여했습니다.
+                        서로 다른 문화를 이해하고 공유하는 활동에 함께했습니다.
+                    </p>
+                </article>
             </div>
         </section>
-
         <!-- Contact -->
         <section class="two-col" id="contact">
             <article class="card">
@@ -756,7 +785,7 @@ GKS 장학생으로 한국에서 학업을 이어오며 다양한 환경에 빠�
                     · 영진전문대학교 컴퓨터정보과 졸업<br>
                     · 건양대학교 한국어 어학당 수료<br>
                     · 키르기스스탄 고등학교 졸업 <br>
-                    . 키르기스스탄 세종 어학당 수료
+                    · 키르기스스탄 세종 어학당 수료
                 </p>
                 <br>
                 <div class="section-caption">LANGUAGES</div>
