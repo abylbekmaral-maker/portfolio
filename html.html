@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>ABYLBEK KYZY MARAL | Network Portfolio</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- 폰트 -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg-main: #f5f5f7;
+      --bg-soft: #ffffff;
+      --bg-card: #ffffff;
+      --accent: #153b72;        /* 네이비 */
+      --accent-soft: #eef3ff;
+      --accent-light: #4b7bd6;
+      --text-main: #111827;
+      --text-muted: #4b5563;
+      --border-soft: #e5e7eb;
+      --code-bg: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      font-family: "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    body {
+      padding-bottom: 40px;
+    }
+
+    /* 공통 레이아웃 */
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 20px 64px;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    /* 헤더 */
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(245, 245, 247, 0.86);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.6);
+    }
+
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .logo {
+      font-size: 1rem;
+      letter-spacing: 0.22em;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      font-size: 0.88rem;
+      color: #4b5563;
+    }
+
+    .nav a {
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav a:hover {
+      border-bottom-color: var(--accent-light);
+      color: var(--accent);
+    }
+
+    /* Hero */
+
+    #top {
+      margin-top: 18px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.35fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    /* Hero 왼쪽 카드 */
+
+    .hero-left {
+      background: var(--bg-card);
+      border-radius: 20px;
+      padding: 18px 20px 16px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.04);
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 14px;
+      align-items: center;
+    }
+
+    .profile-photo {
+      width: 110px;
+      height: 138px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #d1d5db;
+      flex-shrink: 0;
+      background: #f3f4f6;
+    }
+
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-label {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 4px;
+    }
+
+    .hero-label span {
+      font-size: 0.78rem;
+      color: #059669;
+      margin-right: 8px;
+    }
+
+    .hero-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      letter-spacing: 0.03em;
+    }
+
+    .hero-role {
+      font-size: 0.95rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .hero-text {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-meta {
+      font-size: 0.78rem;
+      color: #6b7280;
+    }
+
+    .hero-meta span {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .hero-actions {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      font-size: 0.82rem;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      cursor: default;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    /* 이력서 PDF 버튼 – 네이비 그라데이션 */
+    .btn-primary {
+      background: linear-gradient(135deg, #153b72, #0d2a52);
+      color: white;
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.83rem;
+      box-shadow: 0 6px 18px rgba(21, 59, 114, 0.28);
+      transition: 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, #1b4f8b, #133a69);
+    }
+
+    .btn-ghost {
+      background: #ffffff;
+      color: var(--accent);
+      border-color: #d1d5db;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent-light);
+    }
+
+    /* Hero 전체 네이비 박스 제거, 이미지 + glow만 */
+
+    
+.hero-right {
+  position: relative;
+  border-radius: 20px;
+  background: #ffffff;   /* 🔵 박스는 완전 하얀색 */
+  padding: 18px 20px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+}
+
+
+/* 가장자리 쪽에만 은은한 라인 느낌 */
+.hero-right::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: none;
+  pointer-events: none;
+}
+
+/* 이미지 카드 – 살짝 아래쪽에 위치 + 깊은 네이비 */
+.hero-network-image {
+  margin-top: 45px; /* 사진 살짝 아래로 */
+  margin-bottom: 12px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+}
+
+.hero-network-image img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* 사진 아래 텍스트들 – 네이비 톤에 맞게 */
+.hero-right-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  padding-top: 4px;
+  color: #08101c;   /* 🔵 딥네이비 */
+}
+
+.hero-right-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.hero-pill {
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid #031227;
+  background: #f0f6ff;  /* 네이비랑 잘 어울리는 아주 밝은 파란색 */
+  font-size: 0.75rem;
+  color: #0e1621;       /* 네이비 텍스트 */
+}
+
+.hero-right small {
+  color: #032554;   /* Packet Tracer · VLAN 문구도 네이비 */
+}
+
+
+
+    /* ABOUT */
+    #about {
+      margin-top: 60px;
+      background: transparent;
+    }
+
+    .about-card {
+      background: var(--bg-card);
+      border-radius: 18px;
+      padding: 18px 20px 16px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.04);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .about-card p + p {
+      margin-top: 6px;
+    }
+
+    .about-list {
+      margin-top: 10px;
+      padding-left: 16px;
+      font-size: 0.88rem;
+    }
+
+    .about-list li {
+      margin-bottom: 4px;
+    }
+
+    /* SKILLS */
+
+    #skills {
+      margin-top: 30px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 12px 13px 10px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.03);
+      font-size: 0.86rem;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .skill-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .skill-list {
+      list-style: none;
+      padding-left: 0;
+      color: var(--text-muted);
+    }
+
+    .skill-list li {
+      margin-bottom: 3px;
+      font-size: 0.83rem;
+    }
+
+    /* LABS */
+
+    #labs {
+      margin-top: 34px;
+    }
+
+    #labs .section-sub {
+      max-width: 720px;
+    }
+
+    #labs .labs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .lab-card {
+      background: var(--bg-card);
+      border-radius: 18px;
+      padding: 12px 14px 14px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.86rem;
+    }
+
+    .lab-img-link {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      background: #020617;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .lab-img {
+      width: 100%;
+      display: block;
+    }
+
+    /* 애니메이션 멈춘 상태로만 빛 보이게 */
+ .lab-img-link::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -20%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(56, 189, 248, 0) 0%,
+    rgba(56, 189, 248, 0.18) 50%,
+    rgba(56, 189, 248, 0) 100%
+  );
+  opacity: 0.45;
+  /* 🔹 더 이상 움직이지 않게 고정 */
+  transform: translateX(10%);
+}
+
+/* @keyframes flow-line 은 이제 필요 없으니까 통째로 삭제해도 돼 */
+
+
+    .lab-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .lab-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .lab-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      font-size: 0.75rem;
+      border-radius: 999px;
+      background: #f3f4ff;
+      color: var(--accent);
+      border: 1px solid #dde3ff;
+    }
+
+    .lab-pas {
+      margin-top: 2px;
+      padding: 7px 9px 6px;
+      border-radius: 10px;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      font-size: 0.82rem;
+    }
+
+    .lab-pas-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 3px;
+    }
+
+    .lab-pas-label {
+      min-width: 58px;
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 0.8rem;
+    }
+
+    .lab-pas-text {
+      color: var(--text-muted);
+    }
+
+    .lab-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .lab-meta {
+      font-size: 0.78rem;
+      color: #4b5563;
+    }
+
+    /* 코드 블럭: Config / Verification */
+
+/* 전체 박스 */
+
+/* 탭 버튼 컨테이너 */
+.lab-code-tabs {
+  display: flex;
+  gap: 6px;
+  background: #f8fafc;
+  padding: 8px 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.lab-code-tab:hover {
+  background: #dbeafe;
+  color: #7997ea;
+  transform: translateY(-1px);
+}
+
+
+/* 코드 영역 */
+
+
+/* 코드 안에서 주석/키워드 강조(선택사항: 있으면 더 코드 같아짐) */
+.lab-code code {
+  color: inherit;     /* 위의 청록 그대로 */
+}
+/* 전체 코드 박스 */
+.lab-code-group {
+  margin-top: 12px;
+  border-radius: 12px;
+  overflow: hidden;
+
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04);
+}
+
+/* 탭 영역 */
+.lab-code-header-row {
+  display: flex;
+  gap: 6px;
+  padding: 6px 12px 6px;
+
+  background: #f3f4f6;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* 탭 버튼 */
+.lab-code-tab {
+  cursor: pointer;
+  padding: 5px 16px;
+  font-size: 0.82rem;
+
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #374151;
+
+  transition: all 0.18s ease;
+  font-weight: 500;
+}
+
+.lab-code-tab.active {
+  background: #153b72;
+  color: #ffffff;
+  border-color: #153b72;
+}
+
+/* 실제 코드 부분 */
+.lab-code {
+  margin: 0;
+  padding: 14px 18px 14px;
+  background: #f7f9fc;         /* 거의 흰색에 가까운 고급스러운 톤 */
+  color: #0f172a;               /* 딥 네이비 */
+  border-left: 3px solid #153b72;  /* ← CODE 느낌 핵심 포인트 */
+
+  font-family: "JetBrains Mono", "Fira Code",
+               SFMono-Regular, Menlo, Consolas, monospace;
+
+  font-size: 0.83rem;
+  line-height: 1.58;
+  white-space: pre;
+  overflow-x: auto;
+
+  display: none;
+}
+
+.lab-code.active {
+  display: block;
+}
+
+
+
+/* 설명 텍스트는 그대로 사용해도 되고, 살짝만 변경 */
+.lab-note {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+
+    /* CONTACT */
+
+   /* CONTACT SECTION */
+#contact {
+  margin-top: 50px;
+}
+
+.contact-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 24px 28px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+}
+
+.contact-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+/* .contact-icon {
+  font-size: 1.8rem;
+}  */
+
+.contact-caption {
+  color: #6b7280;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.contact-title {
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: 2px;
+}
+
+/* 정보 목록 */
+.contact-list {
+  margin: 0;
+  padding: 0;
+}
+
+.contact-row {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.contact-row:last-child {
+  border-bottom: none;
+}
+
+.contact-row dt {
+  width: 130px;
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.9rem;
+}
+
+.contact-row dd {
+  margin: 0;
+  color: #4b5563;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+
+    /* 반응형 */
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-right {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .header-inner {
+        padding-inline: 14px;
+      }
+      .page {
+        padding-inline: 14px;
+      }
+
+      .hero-left {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .profile-photo {
+        margin: 0 auto;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 520px) {
+      .skills-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 헤더 -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">MARAL PORTFOLIO</div>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#labs">Labs</a>
+        <a href="#security">Security</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page" id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <div class="profile-photo">
+          <!-- 프로필 사진 파일 이름 맞게 변경 -->
+          <img src="profile.jpg" alt="ABYLBEK KYZY MARAL" />
+        </div>
+        <div>
+
+          <h1 class="hero-name">ABYLBEK KYZY MARAL</h1>
+          <div class="hero-role">Junior Network &amp; Infrastructure Engineer</div>
+          <p class="hero-text">
+            개발 경험을 바탕으로 네트워크 인프라와 보안 구성을 직접 실습하며
+            “구조를 이해하고 안정적으로 운영하는 것”에 집중하고 있습니다.
+            저는 구성의 이유를 이해하고 안정적인 운영을 목표로 설정 상태를 점검하는 엔지니어가 되고 싶습니다. 실제 환경에서 필요한 설정을 정확히 적용하고, 서비스 관점에서 “사용자가 문제 없이 이용할 수 있는 네트워크”를 만드는 데 기여하고자 합니다.
+          </p>
+          <div class="hero-meta">
+            <span>전공: 컴퓨터정보과</span>
+            <span> 네트워크 인프라 · 보안</span>
+          </div>
+          <div class="hero-actions">
+            <div class="btn-primary">
+             <a href="Network_Portfolio.pdf"  download>
+                이력서 PDF 다운로드
+                      </a>
+            </div>
+   
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-right">
+        <div class="hero-network-image">
+          <!-- 네트워크/보안 느낌 이미지 -->
+          <img src="hero-network.jpg" alt="Network & Security" />
+        </div>
+        <div class="hero-right-footer">
+          <div class="hero-right-tags">
+            <span class="hero-pill">Network</span>
+            <span class="hero-pill">Infrastructure</span>
+            <span class="hero-pill">Security</span>
+          </div>
+          <small>Packet Tracer · OSPF · Dynamic Routing · Static Route · HSRP · Inter Vlan </small>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+<section id="about">
+  <div class="section-title">ABOUT</div>
+  <div class="about-card">
+    <h2 class="section-title">네트워크 인프라 &amp; 웹 구현 역량을 갖춘 엔지니어</h2>
+
+    <p>
+      Packet Tracer 기반 라우팅·스위칭 실습을 통해 트래픽 흐름과 설정 변경이 서비스 품질에
+      어떤 영향을 주는지 직접 확인해 왔고, 문제 발생 시 원인을 분석하고 검증하는 절차를
+      중요하게 생각합니다.
+    </p>
+
+    <p>
+      또한 학교 프로젝트와 개인 포트폴리오 작업을 통해
+      웹 화면 구현 역량을 함께 갖추고 있어,
+      네트워크 구성과 사용자 경험을 함께 바라보는 시각을 지향합니다.
+    </p>
+        <ul class="about-list">
+          <li>IPv4, VLAN, 라우팅, 포트 보안 등 인프라 핵심 요소를 직접 구성</li>
+          <li>문제 상황에서 <code>ping</code>, <code>traceroute</code>, 각종
+            <code>show</code> 명령어로 원인 추적 경험</li>
+          <li>사용자 입장에서 “접속이 잘 되는 네트워크”를 목표로 설정을 검토</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-title">SKILLS</div>
+      <p class="section-sub">
+        네트워크 지원 직무에서 바로 업무에 연결될 수 있는 기본 영역을 중심으로
+        정리했습니다.
+      </p>
+      <div class="skills-grid">
+        <article class="skill-card">
+          <div class="skill-title">Network Fundamentals</div>
+          <ul class="skill-list">
+            <li>IPv4 주소 체계, Subnetting, 주소 체계 설계</li>
+            <li>Broadcast / Collision Domain 구분</li>
+            <li>L2 · L3 계층 구조와 역할 이해</li>
+          </ul>
+        </article>
+
+        <article class="skill-card">
+          <div class="skill-title">Routing &amp; Switching</div>
+          <ul class="skill-list">
+            <li>Static Routing / OSPF 기반 Dynamic Routing 구성 &amp; 검증</li>
+            <li>VLAN / Inter-VLAN Routing 환경 설계 및 실습</li>
+            <li>EtherChannel(LACP) 활용한 링크 집성과 STP 환경 이해</li>
+          </ul>
+        </article>
+
+        <article class="skill-card">
+          <div class="skill-title">Network Security </div>
+          <ul class="skill-list">
+            <li>Port Security를 통한 MAC 기반 접속 제어 구성</li>
+            <li>기본적인 네트워크 공격 시나리오와 대응 개념 이해</li>
+            <li>보안 설정 변경이 서비스에 미치는 영향 확인 경험</li>
+          </ul>
+        </article>
+
+        <article class="skill-card">
+          <div class="skill-title">Troubleshooting &amp; Tools</div>
+          <ul class="skill-list">
+            <li><code>show</code> 명령을 활용한 인터페이스/라우팅 테이블 확인</li>
+            <li>Cisco Packet Tracer 기반 Topology 설계 및 실습</li>
+            <li>Ubuntu / Windows 환경의 기본 네트워크 점검 경험</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- LABS -->
+        <!-- LABS -->
+    <section id="labs">
+      <div class="section-title">Practice Labs</div>
+      <p class="section-sub">
+        Packet Tracer를 활용해 실제 환경을 가정하고 구성한 주요 실습입니다.
+        Topology 설계 → 설정(Config) → 검증(Verification) → 문제 분석 순서로
+        진행했습니다.
+      </p>
+
+      <div class="labs-grid">
+        <!-- DHCP -->
+        <article class="lab-card">
+          <a href="dhcp_topology.png" target="_blank" class="lab-img-link">
+            <img src="dhcp_topology.png" class="lab-img" alt="DHCP 토폴로지" />
+          </a>
+
+          <div class="lab-header">
+            <div class="lab-title">DHCP Configuration</div>
+            <div class="lab-chip">Address Management</div>
+          </div>
+
+          <div class="lab-pas">
+            <div class="lab-pas-row">
+              <div class="lab-pas-label">Problem</div>
+              <div class="lab-pas-text">
+                PC들이 자동으로 IP를 받지 못해 통신이 되지 않는 상황
+              </div>
+            </div>
+            <div class="lab-pas-row">
+              <div class="lab-pas-label">Analysis</div>
+              <div class="lab-pas-text">
+                DHCP 풀 범위 및 <code>excluded-address</code> 설정이 실제 네트워크
+                대역과 맞지 않음을 확인
+              </div>
+            </div>
+            <div class="lab-pas-row">
+              <div class="lab-pas-label">Solution</div>
+              <div class="lab-pas-text">
+                네트워크/게이트웨이/DNS 정보를 재설정하고, 각 PC에서 IP 재할당 후
+                통신을 검증
+              </div>
+            </div>
+          </div>
+
+          <p class="lab-desc">
+            192.168.1.0/24 네트워크에서 DHCP 서버를 구성하여 IP 주소, 게이트웨이,
+            DNS를 자동으로 할당하는 환경을 설계했습니다.
+          </p>
+          <p class="lab-meta">
+            Network: 192.168.1.0/24 · Gateway: 192.168.1.1 · DNS: 192.168.1.10 ·
+            Domain: com.kr
+          </p>
+
+          <!-- ✅ DHCP 코드 탭 (지금 네가 만든 스타일 유지) -->
+          <div class="lab-code-group">
+            <div class="lab-code-header-row">
+              <button class="lab-code-tab active" data-code-tab="config">Config</button>
+              <button class="lab-code-tab" data-code-tab="verification">Verification</button>
+            </div>
+
+            <pre class="lab-code active" data-code-block="config"><code>ip dhcp excluded-address 1.1.1.1 1.1.1.100
+ip dhcp pool VLAN1
+ network 192.168.1.0 255.255.255.0
+ default-router 192.168.1.1
+ dns-server 192.168.1.10
+ domain-name com.kr</code></pre>
+
+            <pre class="lab-code" data-code-block="verification"><code>show ip dhcp binding
+show ip interface brief
+! 클라이언트 단
+ipconfig /all
+ipconfig /renew</code></pre>
+          </div>
+
+          <p class="lab-note">
+            각 PC가 올바른 게이트웨이와 DNS 정보를 할당받는지 확인하고,
+            잘못된 설정이 있을 때 PC 단에서 보이는 증상을 비교했습니다.
+          </p>
+        </article>
+
+        <!-- EtherChannel -->
+        <article class="lab-card">
+          <a
+            href="etherchannel_topology.png"
+            target="_blank"
+            class="lab-img-link"
+          >
+            <img
+              src="etherchannel_topology.png"
+              class="lab-img"
+              alt="EtherChannel 토폴로지"
+            />
+          </a>
+
+          <div class="lab-header">
+            <div class="lab-title">EtherChannel (LACP)</div>
+            <div class="lab-chip">Link Aggregation</div>
+          </div>
+
+          <div class="lab-pas">
+            <div class="lab-pas-row">
+              <div class="lab-pas-label">Problem</div>
+              <div class="lab-pas-text">
+                스위치 간 여러 링크를 연결했지만 STP에 의해 일부 링크가 차단되는
+                상황
+              </div>
+            </div>
+            <div class="lab-pas-row">
+              <div class="lab-pas-label">Analysis</div>
+              <div class="lab-pas-text">
+                STP가 동일 경로로 인식해 하나의 포트만 활성화하고 나머지는 Blocking
+                상태로 유지되는 것을 확인
+              </div>
+            </div>
+            <div class="lab-pas-row">
+              <div class="lab-pas-label">Solution</div>
+              <div class="lab-pas-text">
+                EtherChannel(LACP)로 물리 링크를 하나의 논리 Port-Channel로 묶어,
+                STP와 충돌 없이 대역폭을 증가하도록 구성
+              </div>
+            </div>
+          </div>
+
+          <p class="lab-desc">
+            스위치 사이 다중 링크를 LACP 기반 EtherChannel로 구성하여,
+            STP와 충돌 없이 안정적으로 링크를 사용하는 실습을 진행했습니다.
+          </p>
+          <p class="lab-meta">
+            LACP 기반 링크 집성 · Port-Channel 인터페이스 설정 및 검증
+          </p>
+
+          <!-- ✅ EtherChannel 코드 탭 -->
+          <div class="lab-code-group">
+            <div class="lab-code-header-row">
+              <button class="lab-code-tab active" data-code-tab="config">Config</button>
+              <button class="lab-code-tab" data-code-tab="verification">Verification</button>
+            </div>
+
+            <pre class="lab-code active" data-code-block="config"><code>interface range fa0/1 - 2
+ channel-group 1 mode active
+!
+interface port-channel 1
+ switchport mode trunk</code></pre>
+
+            <pre class="lab-code" data-code-block="verification"><code>show etherchannel summary
+show interfaces port-channel 1
+show spanning-tree</code></pre>
+          </div>
+
+          <p class="lab-note">
+            EtherChannel 구성 전·후의 STP 상태와 사용 가능한 대역폭 변화를 비교하며
+            링크 집성의 효과를 정리했습니다.
+          </p>
+        </article>
+
+        <!-- OSPF -->
+        <article class="lab-card">
+          <a href="ospf_topology.png" target="_blank" class="lab-img-link">
+            <img src="ospf_topology.png" class="lab-img" alt="OSPF 토폴로지" />
+          </a>
+
+          <div class="lab-header">
+            <div class="lab-title">OSPF Single-Area Routing</div>
+            <div class="lab-chip">Dynamic Routing</div>
+          </div>
+
+          <div class="lab-pas">
+            <div class="lab-pas-row">
+              <div class="lab-pas-label">Problem</div>
+              <div class="lab-pas-text">
+                여러 라우터에 연결된 네트워크 간에 라우팅 정보가 자동으로 공유되지
+                않는 상황
+              </div>
+            </div>
+            <div class="lab-pas-row">
+              <div class="lab-pas-label">Analysis</div>
+              <div class="lab-pas-text">
+                정적 라우팅만으로는 관리가 비효율적이며, Dynamic Routing 프로토콜
+                (OSPF)이 필요함을 확인
+              </div>
+            </div>
+            <div class="lab-pas-row">
+              <div class="lab-pas-label">Solution</div>
+              <div class="lab-pas-text">
+                Area 0 기반 OSPF를 구성하고 Router-ID와 network 범위를 정의하여
+                경로를 자동으로 교환하도록 설정
+              </div>
+            </div>
+          </div>
+
+          <p class="lab-desc">
+            여러 라우터를 단일 Area 0으로 구성하고 OSPF를 적용하여 링크 상태 기반
+            경로 계산과 라우팅 테이블 변화를 확인했습니다.
+          </p>
+          <p class="lab-meta">
+            Area 0 · Router-ID 설정 · Neighbor 관계 및 라우팅 테이블 검증
+          </p>
+
+          <!-- ✅ OSPF 코드 탭 -->
+          <div class="lab-code-group">
+            <div class="lab-code-header-row">
+              <button class="lab-code-tab active" data-code-tab="config">Config</button>
+              <button class="lab-code-tab" data-code-tab="verification">Verification</button>
+            </div>
+
+            <pre class="lab-code active" data-code-block="config"><code>router ospf 1
+ router-id 1.1.1.1
+ network 192.168.1.0 0.0.0.255 area 0
+ network 210.101.244.0 0.0.0.3 area 0</code></pre>
+
+            <pre class="lab-code" data-code-block="verification"><code>show ip ospf neighbor
+show ip route
+ping 192.168.2.10</code></pre>
+          </div>
+
+          <p class="lab-note">
+            OSPF Neighbor 상태 변화와 라우팅 테이블 업데이트를 단계별로 확인하며,
+            Dynamic Routing이 필요한 이유를 다시 정리했습니다.
+          </p>
+        </article>
+
+        <!-- Port Security -->
+        <article class="lab-card">
+          <a
+            href="portsecurity_topology.png"
+            target="_blank"
+            class="lab-img-link"
+          >
+            <img
+              src="portsecurity_topology.png"
+              class="lab-img"
+              alt="Port Security 토폴로지"
+            />
+          </a>
+
+          <div class="lab-header">
+            <div class="lab-title">Port Security</div>
+            <div class="lab-chip">Access Control</div>
+          </div>
+
+          <div class="lab-pas">
+            <div class="lab-pas-row">
+              <div class="lab-pas-label">Problem</div>
+              <div class="lab-pas-text">
+                허가되지 않은 단말이 스위치 포트에 연결되어도 네트워크에 접근 가능한
+                상황
+              </div>
+            </div>
+            <div class="lab-pas-row">
+              <div class="lab-pas-label">Analysis</div>
+              <div class="lab-pas-text">
+                Access Port에 대한 보안 설정이 없어 MAC 기반 제어가 이뤄지지 않고
+                있음을 확인
+              </div>
+            </div>
+            <div class="lab-pas-row">
+              <div class="lab-pas-label">Solution</div>
+              <div class="lab-pas-text">
+                Port Security로 허용 MAC 개수와 Violation 동작을 정의하고,
+                Sticky MAC 옵션으로 실제 접속 단말을 고정
+              </div>
+            </div>
+          </div>
+
+          <p class="lab-desc">
+            특정 포트에 허용된 단말만 접속하도록 Port Security를 구성하고,
+            MAC 주소 기반으로 접속을 제한하는 실습을 진행했습니다.
+          </p>
+          <p class="lab-meta">
+            MAC 기반 제한 · 최대 접속 수 지정 · Violation 동작 설정
+          </p>
+
+          <!-- ✅ Port Security 코드 탭 -->
+          <div class="lab-code-group">
+            <div class="lab-code-header-row">
+              <button class="lab-code-tab active" data-code-tab="config">Config</button>
+              <button class="lab-code-tab" data-code-tab="verification">Verification</button>
+            </div>
+
+            <pre class="lab-code active" data-code-block="config"><code>interface fa0/1
+ switchport mode access
+ switchport port-security
+ switchport port-security maximum 1
+ switchport port-security violation shutdown
+ switchport port-security mac-address sticky</code></pre>
+
+            <pre class="lab-code" data-code-block="verification"><code>show port-security interface fa0/1
+show log</code></pre>
+          </div>
+
+          <p class="lab-note">
+            허용된 단말과 허용되지 않은 단말을 번갈아 연결해 보며 포트 상태 변화와
+            로그를 확인했습니다.
+          </p>
+        </article>
+      </div>
+    </section>
+       <!-- SECURITY -->
+<section id="security">
+  <div>
+    <br>
+    <br>
+  <div class="section-title">Security (보안)</div>
+  <div class="about-card">
+    <p>
+      네트워크 실습을 진행하면서 트래픽이 실제로 어떻게 흐르고,
+      어떤 지점에서 취약점이 발생할 수 있는지 구조적인 관점에서 함께 확인했습니다.
+    </p>
+
+    <p>
+      특히 “보안은 추가 기능이 아니라 기본 구성의 일부”라는 관점으로
+      네트워크 환경에서 자주 발생할 수 있는 위험 요소를 체크하는 습관을 갖고자 했습니다.
+    </p>
+
+    <ul class="about-list">
+      <li>ARP 스푸핑 등 L2 단계에서 발생할 수 있는 기본 공격 개념 이해</li>
+      <li>Unknown Unicast Flooding 구조 이해 및 스위치 동작 방식 검토</li>
+      <li>불필요한 서비스·포트를 비활성화하여 공격 표면을 최소화하는 원칙 학습</li>
+      <li>로그 기반 모니터링을 통해 정상/비정상 트래픽 패턴 구분 연습</li>
+      <li>네트워크 변경 시 영향도와 잠재적 보안 리스크를 함께 점검하는 습관 형성</li>
+    </ul>
+  </div>
+  </div>
+</section>
+
+    <!-- CONTACT -->
+<section id="contact">
+  <div class="contact-card">
+    <div class="contact-header">
+      <!-- <div class="contact-icon">📡</div> -->
+      <div>
+        <div class="contact-caption">CONTACT</div>
+        <div class="contact-title">연락처 & 기본 정보</div>
+      </div>
+    </div>
+
+    <dl class="contact-list">
+      <div class="contact-row">
+        <dt>이름</dt>
+        <dd>ABYLBEK KYZY MARAL (마랄)</dd>
+      </div>
+
+      <div class="contact-row">
+        <dt>생년월일</dt>
+        <dd>2001.02.09</dd>
+      </div>
+
+      <div class="contact-row">
+        <dt>이메일</dt>
+        <dd>abylbekmaral@gmail.com<br>maraltolonova@naver.com</dd>
+      </div>
+
+      <div class="contact-row">
+        <dt>연락처</dt>
+        <dd>010-6528-0102</dd>
+      </div>
+
+      <div class="contact-row">
+        <dt>지역</dt>
+        <dd>대한민국 – 서울 / 대구 거주 및 근무 가능</dd>
+      </div>
+
+      <div class="contact-row">
+        <dt>비자</dt>
+        <dd>D-10(구직)</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+  </main>
+  <script>
+  document.querySelectorAll('.lab-code-group').forEach(group => {
+    const tabs = group.querySelectorAll('.lab-code-tab');
+    const blocks = group.querySelectorAll('.lab-code');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.codeTab;
+
+        tabs.forEach(t =>
+          t.classList.toggle('active', t === tab)
+        );
+        blocks.forEach(b =>
+          b.classList.toggle('active', b.dataset.codeBlock === target)
+        );
+      });
+    });
+  });
+</script>
+
+
+</body>
+</html>
