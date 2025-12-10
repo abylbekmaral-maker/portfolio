@@ -727,6 +727,28 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
+    /* --- 모바일 화면(720px 이하)에서 메뉴 정렬 --- */
+@media (max-width: 720px) {
+
+    .header-inner {
+        flex-direction: column;    /* 위아래 배치 */
+        align-items: center;
+        gap: 10px;
+        padding: 12px 20px;
+    }
+
+    .nav {
+        flex-wrap: wrap;           /* 메뉴 줄바꿈 */
+        justify-content: center;   /* 가운데 정렬 */
+        gap: 12px;
+        font-size: 0.85rem;
+    }
+
+    .nav a {
+        padding: 2px 0;
+    }
+}
+
 
     @media (max-width: 520px) {
       .skills-grid {
